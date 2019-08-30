@@ -15,8 +15,9 @@ def ReadPasswordFile(filepath):
     return list
 
 def IterateShadowFile(filepath, passwords):
-    file = open(filepath) #need to close)
+    file = open(filepath)
     lines = file.read().split("\n")
+    file.close
 
     for line in lines:
         if line == "":
@@ -30,7 +31,6 @@ def IterateShadowFile(filepath, passwords):
             if(CheckValues(pw, old_hash)):
                 print("Password for " + username + " is " + pw)
                 break
-    file.close
 
 list = ReadPasswordFile("/home/blaseter/Documents/Dev/Python/PasswordCracker/listopass.txt")
 IterateShadowFile("/home/blaseter/Documents/Dev/Python/PasswordCracker/Passwords.txt", list)
