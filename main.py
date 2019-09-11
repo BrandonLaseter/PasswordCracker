@@ -1,4 +1,5 @@
 import crypt
+import sys
 from hmac import compare_digest as compare_hash
 
 def CheckValues(text, original_hash):
@@ -32,7 +33,15 @@ def IterateShadowFile(filepath, passwords):
                 print("Password for " + username + " is " + pw)
                 break
 
-list = ReadPasswordFile("/home/blaseter/Documents/Dev/Python/PasswordCracker/listopass.txt")
-IterateShadowFile("/home/blaseter/Documents/Dev/Python/PasswordCracker/Passwords.txt", list)
+shadowfilepath = sys.argv[1]
+passwordfilepath = sys.argv[2]
+
+print ("Shadow file path " + shadowfilepath)
+print ("Password file path " + passwordfilepath)
+
+#list = ReadPasswordFile("/home/blaseter/Documents/Dev/Python/PasswordCracker/listopass.txt")
+list = ReadPasswordFile(passwordfilepath)
+#IterateShadowFile("/home/blaseter/Documents/Dev/Python/PasswordCracker/Passwords.txt", list)
+IterateShadowFile(shadowfilepath, list)
 print ("Done")
 
